@@ -1,0 +1,20 @@
+{
+  "name": "boilerplate",
+  "version": "1.0.0",
+  "author": "Ícaro C. Capobianco",
+  "devDependencies": {
+    "@types/koa": "^2.13.4",
+    "@types/node": "^18.0.1",
+    "concurrently": "^7.2.2",
+    "microbundle": "^0.15.0",
+    "typescript": "^4.7.4"
+  },
+  "scripts": {
+    "build": "microbundle watch src/main.ts -o bundle/server.js --target node --format esm --sourcemap false --generateTypes false",
+    "watch": "nodemon bundle/server.esm.mjs",
+    "dev": "concurrently \"npm run build\" \"npm run watch\""
+  },
+  "dependencies": {
+    "koa": "^2.13.4"
+  }
+}
