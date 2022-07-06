@@ -10,4 +10,6 @@ The list goes:
  - [X] Storybook, React, and ChakraUI. With Vite for PWAs;
 
 **Backend**
- - [ ] Empty plate with only microbundle set;
+ - [X] Empty plate with only Koa and microbundle
+ - [X] Koa Web App with Storybook, React, ChakraUI, ready to be served as a PWA
+ - [ ] Koa Backend with WebSockets available
