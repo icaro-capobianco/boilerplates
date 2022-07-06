@@ -5,7 +5,13 @@ import socketio from './socket.io'
 
 const koa = new Koa()
 const server = http.createServer(koa.callback())
-const io = new Server(server)
+const io = new Server(server, {
+  transports: ['websocket'],
+  cors: {
+    origin: "https://asasvirtuais.com",
+    credentials: true
+  }
+})
 
 const app : App = {
   koa, server, io,
