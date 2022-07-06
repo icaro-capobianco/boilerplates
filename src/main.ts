@@ -1,20 +1,20 @@
 import Koa from 'koa'
 import http from 'http'
 import { Server } from 'socket.io'
+import socketio from './socket.io'
 
-const app = new Koa()
-const server = http.createServer(app.callback())
+const koa = new Koa()
+const server = http.createServer(koa.callback())
 const io = new Server(server)
 
-app.use((ctx: Koa.Context) => {
-    ctx.response.body = 'OK'
-})
+const app : App = {
+  koa, server, io,
+  configure : ( cb : ( app : App ) => void ) => {
+    cb(app)
+    return app
+  }
+}
 
-io.on('connection', (socket) => {
-    console.log('connected')
-    socket.on('disconnect', () => {
-      console.log('disconnected')
-    })
-})
+app.configure( socketio )
 
 server.listen(3000)
