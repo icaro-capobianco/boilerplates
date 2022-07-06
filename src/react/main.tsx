@@ -3,7 +3,7 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 
 export const Main = ( { name } : { name : string } ) => (
-    <Heading>Hello {name}!</Heading>
+    <Heading>Hello there {name}!</Heading>
 )
 
 const root = document.getElementById('root')

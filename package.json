@@ -5,12 +5,13 @@
   "devDependencies": {
     "@mdx-js/react": "^2.1.2",
     "@storybook/addon-essentials": "^6.5.9",
-    "@storybook/builder-vite": "^0.1.36",
+    "@storybook/builder-vite": "^0.1.38",
     "@storybook/react": "^6.5.9",
     "@types/node": "^18.0.1",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^1.3.2",
-    "storybook-builder-vite": "^0.1.23",
+    "concurrently": "^7.2.2",
+    "microbundle": "^0.15.0",
     "typescript": "^4.7.4",
     "vite": "^2.9.13",
     "vite-plugin-pwa": "^0.12.2"
@@ -20,15 +21,23 @@
     "@chakra-ui/storybook-addon": "^4.0.1",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
+    "@types/koa": "^2.13.4",
+    "@types/koa-mount": "^4.0.1",
+    "@types/koa-static": "^4.0.2",
     "framer-motion": "^6.3.16",
+    "koa": "^2.13.4",
+    "koa-mount": "^4.0.0",
+    "koa-static": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "scripts": {
     "sb": "start-storybook -p 6006",
-    "build-sb": "build-storybook",
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build:sb": "build-storybook -o build/storybook -- --preview-url=/storybook/iframe.html",
+    "dev:vite": "vite",
+    "build:vite": "vite build --watch --outDir build/dist",
+    "preview": "vite preview",
+    "build:node": "microbundle --watch src/server/main.ts -o build/server.js --target node --format esm --sourcemap false --generateTypes false",
+    "watch:node": "nodemon build/server.esm.mjs"
   }
 }
